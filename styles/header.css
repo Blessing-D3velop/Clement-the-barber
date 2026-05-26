@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap');
+
+/* ─── CSS Variables ─── */
+:root {
+  --bg:           #0d0d0d;
+  --surface:      #141414;
+  --border:       #2a2a2a;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c97a;
+  --gold-dim:     rgba(201, 168, 76, 0.15);
+  --text-primary: #f0ece4;
+  --text-muted:   #7a7060;
+  --header-h:     80px;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ─── Header ─── */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  /* subtle inner glow along the bottom border */
+  box-shadow: 0 1px 0 0 rgba(201, 168, 76, 0.2),
+              0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* thin gold line at very top of header */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ─── Left: Logo ─── */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.clement-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--gold);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.25);
+}
+
+.header-labels-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.clement-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+.barber-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* ─── Right: Nav ─── */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.right-section p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.25s ease;
+}
+
+/* animated underline on hover */
+.right-section p::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.right-section p:hover {
+  color: var(--gold-light);
+}
+
+.right-section p:hover::after {
+  width: 100%;
+}
+
+/* ─── Book Now Button ─── */
+.book-now-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* fill sweep on hover */
+.book-now-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.book-now-btn:hover::before {
+  transform: translateX(0);
+}
+
+.book-now-btn:hover {
+  color: #0d0d0d;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+}
+
+.book-now-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.book-icon {
+  width: 14px;
+  height: 14px;
+  filter: invert(75%) sepia(40%) saturate(600%) hue-rotate(5deg);
+  transition: filter 0.3s ease;
+}
+
+.book-now-btn:hover .book-icon {
+  filter: invert(0%) brightness(0%);
+}
+
+/* ─── Hamburger ─── */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.hamburger:hover {
+  color: var(--gold);
+}
+
+/* ─── Mobile Menu ─── */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 85vw);
+  height: 100vh;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 200;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.open {
+  right: 0;
+  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.7);
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.close-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--gold);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 28px;
+  gap: 0;
+}
+
+.mobile-nav p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-nav p:hover {
+  color: var(--gold-light);
+  padding-left: 8px;
+}
+
+/* ─── Mobile Book Now Button ─── */
+.mobile-book-now-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+  padding: 14px 0;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.mobile-book-now-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-book-now-btn:hover::before {
+  transform: translateY(0);
+}
+
+.mobile-book-now-btn:hover {
+  color: #0d0d0d;
+}
+
+.mobile-book-now-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ───────────────────────────────────────── */
+/*          RESPONSIVE IMPROVEMENTS         */
+/* ───────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  header {
+    padding: 0 28px;
+  }
+
+  .right-section {
+    gap: 20px;
+  }
+
+  .right-section p {
+    font-size: 0.65rem;
+  }
+
+  .book-now-btn {
+    padding: 9px 18px;
+    font-size: 0.65rem;
+  }
+}
+
+/* ─── MOBILE (MAIN BREAKPOINT) ─── */
+@media (max-width: 768px) {
+
+  header {
+    padding: 0 18px;
+    height: 70px;
+  }
+
+  /* Hide desktop nav */
+  .right-section p,
+  .book-now-btn {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* Reduce logo size */
+  .clement-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .clement-label {
+    font-size: 1rem;
+  }
+
+  .barber-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Mobile menu full usability fix */
+  .mobile-menu {
+    width: 100%;
+  }
+
+  .mobile-nav {
+    padding: 30px 22px;
+  }
+
+  .mobile-nav p {
+    font-size: 1.3rem;
+  }
+
+  .mobile-book-now-btn {
+    font-size: 0.7rem;
+    padding: 14px;
+  }
+}
+
+/* ─── SMALL PHONES ─── */
+@media (max-width: 480px) {
+
+  header {
+    padding: 0 14px;
+  }
+
+  .left-section {
+    gap: 8px;
+  }
+
+  .clement-label {
+    font-size: 0.9rem;
+  }
+
+  .barber-label {
+    font-size: 0.6rem;
+  }
+
+  .hamburger {
+    font-size: 1.8rem;
+  }
+
+  .mobile-nav p {
+    font-size: 1.1rem;
+  }
+}
