@@ -3,89 +3,104 @@ import { services } from "./data/servicesData.js";
 const servicesGrid =
 document.querySelector(".js-services-grid");
 
-const whatsappNumber = "27718723420"; // WhatsApp format (SA = 27 + number)
+const toggleBtn =
+document.querySelector(".js-toggle-btn");
 
-services.forEach((service, index) => {
+const whatsappNumber = "27718723420";
 
-  let currentImage = 0;
+let showingAll = false;
 
-  const card = document.createElement("div");
-  card.classList.add("service-card");
+// how many to show initially
+let visibleCount = 4;
 
-  const message = `Hi, I would like to book this service:
+function renderServices() {
+
+  servicesGrid.innerHTML = "";
+
+  const list = showingAll
+    ? services
+    : services.slice(0, visibleCount);
+
+  list.forEach((service) => {
+
+    let currentImage = 0;
+
+    const message = `Hi, I would like to book this service:
 
 💈 Service: ${service.name}
 💰 Price: ${service.price}
 
 Please let me know available times.`;
 
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappLink =
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-  card.innerHTML = `
-  
-  <div class="service-image-wrapper">
+    const card = document.createElement("div");
+    card.classList.add("service-card");
 
-    <img
-      class="service-image"
-      src="${service.images[0]}"
-      alt="${service.name}">
+    card.innerHTML = `
+    
+    <div class="service-image-wrapper">
 
-    <div class="service-nav">
+      <img class="service-image"
+        src="${service.images[0]}"
+        alt="${service.name}">
 
-      <button class="service-btn prev-btn">◀</button>
-      <button class="service-btn next-btn">▶</button>
+      <div class="service-nav">
+        <button class="service-btn prev-btn">◀</button>
+        <button class="service-btn next-btn">▶</button>
+      </div>
 
     </div>
 
-  </div>
+    <div class="service-content">
 
-  <div class="service-content">
+      <h3 class="service-name">${service.name}</h3>
 
-    <h3 class="service-name">
-      ${service.name}
-    </h3>
+      <p class="service-description">${service.description}</p>
 
-    <p class="service-description">
-      ${service.description}
-    </p>
+      <div class="service-price">${service.price}</div>
 
-    <div class="service-price">
-      ${service.price}
+      <button class="service-book-btn js-book-btn">
+        Book on WhatsApp
+      </button>
+
     </div>
+    `;
 
-    <button href="${whatsappLink}" target="_blank" class="service-book-btn">
-      Book on WhatsApp
-    </button>
+    const image = card.querySelector(".service-image");
 
-  </div>
-  `;
+    card.querySelector(".next-btn").addEventListener("click", () => {
+      currentImage = (currentImage + 1) % service.images.length;
+      image.src = service.images[currentImage];
+    });
 
-  const image =
-  card.querySelector(".service-image");
+    card.querySelector(".prev-btn").addEventListener("click", () => {
+      currentImage =
+        (currentImage - 1 + service.images.length) %
+        service.images.length;
 
-  card.querySelector(".next-btn")
-  .addEventListener("click", () => {
+      image.src = service.images[currentImage];
+    });
 
-    currentImage++;
+    card.querySelector(".js-book-btn").addEventListener("click", () => {
+      window.open(whatsappLink, "_blank");
+    });
 
-    if (currentImage >= service.images.length) {
-      currentImage = 0;
-    }
-
-    image.src = service.images[currentImage];
+    servicesGrid.appendChild(card);
   });
 
-  card.querySelector(".prev-btn")
-  .addEventListener("click", () => {
+  // update button text
+  toggleBtn.textContent = showingAll
+    ? "View Less"
+    : "View More";
+}
 
-    currentImage--;
-
-    if (currentImage < 0) {
-      currentImage = service.images.length - 1;
-    }
-
-    image.src = service.images[currentImage];
-  });
-
-  servicesGrid.appendChild(card);
+// toggle logic
+toggleBtn.addEventListener("click", () => {
+  showingAll = !showingAll;
+  renderServices();
 });
+
+// initial render
+renderServices();

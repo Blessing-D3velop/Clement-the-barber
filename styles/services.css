@@ -193,3 +193,45 @@
 .service-book-btn:active {
   transform: translateY(0);
 }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* desktop bigger layout */
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.services-toggle-btn {
+  margin: 30px auto;
+  display: block;
+  padding: 12px 20px;
+
+  background: transparent;
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.services-toggle-btn:hover {
+  background: #c9a84c;
+  color: #0d0d0d;
+}
