@@ -1,0 +1,132 @@
+.how-section {
+  padding: 120px 8%;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+/* HEADER */
+.how-header {
+  text-align: center;
+  max-width: 850px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.how-tag {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  font-size: .75rem;
+}
+
+.how-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin: 20px 0;
+}
+
+.how-subtitle {
+  color: rgba(240,236,228,.7);
+  line-height: 1.8;
+}
+
+/* MAIN STEPS */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.how-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 30px;
+  position: relative;
+  transition: .3s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,168,76,.4);
+}
+
+.how-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(201,168,76,.2);
+}
+
+.how-card h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+  color: var(--gold);
+}
+
+.how-card p {
+  color: rgba(240,236,228,.7);
+  line-height: 1.6;
+}
+
+/* EXTRA INFO */
+.how-extra {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.how-extra-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 25px;
+  transition: .3s ease;
+}
+
+.how-extra-box:hover {
+  border-color: rgba(201,168,76,.4);
+  transform: translateY(-4px);
+}
+
+.how-extra-box h3 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.how-extra-box p {
+  color: rgba(240,236,228,.7);
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.how-action {
+  text-align: center;
+}
+
+.how-btn {
+  padding: 14px 28px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .75rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.how-btn:hover {
+  background: var(--gold);
+  color: #0d0d0d;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .how-grid,
+  .how-extra {
+    grid-template-columns: 1fr;
+  }
+}
