@@ -58,9 +58,6 @@
         <p class="contact js-contact">Contact</p>
 
         <button class="mobile-book-now-btn js-book-now-btn">
-          <img src="images-and-icons/Icons/scissors.png"
-          alt="book-icon"
-          class="book-icon">
           Book Now
         </button>
       </div>
@@ -312,8 +309,51 @@
 
     </section>
 
+    <!-- Gallery section -->
+    <section class="gallery-section">
+
+      <div class="gallery-header">
+        <span class="gallery-tag">Gallery</span>
+
+        <h2 class="gallery-title">
+          Our Work Speaks For Itself
+        </h2>
+
+        <p class="gallery-description">
+          Explore our latest cuts, fades, and styles.
+        </p>
+      </div>
+
+      <div class="gallery-grid js-gallery-grid"></div>
+
+      <!-- VIEW MORE / LESS BUTTON -->
+      <div class="gallery-controls">
+        <button class="gallery-toggle-btn js-toggle-btn">
+          View More
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox js-lightbox">
+
+      <span class="lightbox-close js-close">✕</span>
+
+      <img class="lightbox-img js-lightbox-img" />
+
+      <button class="lightbox-btn prev js-prev">◀</button>
+      <button class="lightbox-btn next js-next">▶</button>
+
+    </div>
+
+
+</div>
     <script src="scripts/header.js"></script>
     <script type="module" src="scripts/services.js"></script>
     <script type="module" src="scripts/help.js"></script>
+    <script type="module" src="scripts/gallery.js"></script>
+  </body>
   </body>
 </html>

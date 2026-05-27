@@ -1,0 +1,186 @@
+.gallery-section {
+  padding: 100px 40px;
+  background: #0d0d0d;
+  color: #f0ece4;
+}
+
+/* HEADER */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.gallery-tag {
+  color: #c9a84c;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.gallery-title {
+  font-size: 2.2rem;
+  margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.gallery-description {
+  max-width: 600px;
+  margin: 10px auto;
+  color: #7a7060;
+}
+
+/* =========================
+   GRID (DEFAULT = DESKTOP)
+========================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  /* collapsed state */
+  max-height: 520px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+/* =========================
+   TABLET / MOBILE
+   2 COLUMNS + MORE HEIGHT
+========================= */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 900px; /* shows ~6 rows */
+  }
+}
+
+/* =========================
+   EXPANDED STATE
+========================= */
+.gallery-grid.expanded {
+  max-height: 5000px;
+}
+
+/* =========================
+   CARD
+========================= */
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+/* HOVER TEXT */
+.gallery-hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  color: #e8c97a;
+  padding: 12px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.gallery-card:hover .gallery-hover {
+  opacity: 1;
+}
+
+/* =========================
+   BUTTON (VIEW MORE)
+========================= */
+.gallery-controls {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.gallery-toggle-btn {
+  padding: 10px 22px;
+  border: 1px solid #c9a84c;
+  background: transparent;
+  color: #c9a84c;
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  transition: 0.3s ease;
+}
+
+.gallery-toggle-btn:hover {
+  background: #c9a84c;
+  color: #0d0d0d;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+/* CLOSE BUTTON */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #c9a84c;
+  cursor: pointer;
+}
+
+/* NAV BUTTONS */
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.lightbox-btn:hover {
+  background: #c9a84c;
+  color: #0d0d0d;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
