@@ -64,19 +64,3 @@ prevBtn.addEventListener("click", () => {
   updateImage();
 });
 
-
-// VIEW MORE / LESS (FIXED)
-const toggleBtn = document.querySelector(".js-toggle-btn");
-
-let isExpanded = false;
-
-toggleBtn.addEventListener("click", () => {
-
-  isExpanded = !isExpanded;
-
-  galleryGrid.classList.toggle("expanded", isExpanded);
-
-  toggleBtn.textContent = isExpanded
-    ? "View Less"
-    : "View More";
-});

@@ -4,7 +4,7 @@
   color: #f0ece4;
 }
 
-/* HEADER */
+
 .gallery-header {
   text-align: center;
   margin-bottom: 50px;
@@ -29,9 +29,7 @@
   color: #7a7060;
 }
 
-/* =========================
-   GRID (DEFAULT = DESKTOP)
-========================= */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -43,10 +41,6 @@
   transition: max-height 0.5s ease;
 }
 
-/* =========================
-   TABLET / MOBILE
-   2 COLUMNS + MORE HEIGHT
-========================= */
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -54,16 +48,11 @@
   }
 }
 
-/* =========================
-   EXPANDED STATE
-========================= */
+
 .gallery-grid.expanded {
   max-height: 5000px;
 }
 
-/* =========================
-   CARD
-========================= */
 .gallery-card {
   position: relative;
   overflow: hidden;
@@ -82,7 +71,7 @@
   transform: scale(1.1);
 }
 
-/* HOVER TEXT */
+
 .gallery-hover {
   position: absolute;
   bottom: 0;
@@ -100,9 +89,6 @@
   opacity: 1;
 }
 
-/* =========================
-   BUTTON (VIEW MORE)
-========================= */
 .gallery-controls {
   text-align: center;
   margin-top: 25px;
@@ -125,9 +111,7 @@
   color: #0d0d0d;
 }
 
-/* =========================
-   LIGHTBOX
-========================= */
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -149,7 +133,7 @@
   border-radius: 10px;
 }
 
-/* CLOSE BUTTON */
+
 .lightbox-close {
   position: absolute;
   top: 20px;
@@ -159,7 +143,7 @@
   cursor: pointer;
 }
 
-/* NAV BUTTONS */
+
 .lightbox-btn {
   position: absolute;
   top: 50%;

@@ -104,3 +104,18 @@ toggleBtn.addEventListener("click", () => {
 
 // initial render
 renderServices();
+const servicesGrid = document.querySelector(".js-services-grid");
+const toggleBtn = document.querySelector(".js-toggle-btn");
+
+let expanded = false;
+
+toggleBtn.addEventListener("click", () => {
+
+  expanded = !expanded;
+
+  servicesGrid.classList.toggle("expanded", expanded);
+
+  toggleBtn.textContent = expanded
+    ? "View Less"
+    : "View More";
+});
