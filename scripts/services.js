@@ -1,17 +1,12 @@
 import { services } from "./data/servicesData.js";
 
-const servicesGrid =
-document.querySelector(".js-services-grid");
-
-const toggleBtn =
-document.querySelector(".js-toggle-btn");
+const servicesGrid = document.querySelector(".js-services-grid");
+const toggleBtn    = document.querySelector(".js-toggle-btn");
 
 const whatsappNumber = "27718723420";
 
 let showingAll = false;
-
-// how many to show initially
-let visibleCount = 4;
+const INITIAL_COUNT = 4;
 
 function renderServices() {
 
@@ -19,13 +14,14 @@ function renderServices() {
 
   const list = showingAll
     ? services
-    : services.slice(0, visibleCount);
+    : services.slice(0, INITIAL_COUNT);
 
   list.forEach((service) => {
 
     let currentImage = 0;
 
-    const message = `Hi, I would like to book this service:
+    const message =
+`Hi, I would like to book this service:
 
 💈 Service: ${service.name}
 💰 Price: ${service.price}
@@ -33,39 +29,30 @@ function renderServices() {
 Please let me know available times.`;
 
     const whatsappLink =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     const card = document.createElement("div");
     card.classList.add("service-card");
 
     card.innerHTML = `
-    
-    <div class="service-image-wrapper">
-
-      <img class="service-image"
-        src="${service.images[0]}"
-        alt="${service.name}">
-
-      <div class="service-nav">
-        <button class="service-btn prev-btn">◀</button>
-        <button class="service-btn next-btn">▶</button>
+      <div class="service-image-wrapper">
+        <img class="service-image"
+          src="${service.images[0]}"
+          alt="${service.name}">
+        <div class="service-nav">
+          <button class="service-btn prev-btn">◀</button>
+          <button class="service-btn next-btn">▶</button>
+        </div>
       </div>
 
-    </div>
-
-    <div class="service-content">
-
-      <h3 class="service-name">${service.name}</h3>
-
-      <p class="service-description">${service.description}</p>
-
-      <div class="service-price">${service.price}</div>
-
-      <button class="service-book-btn js-book-btn">
-        Book on WhatsApp
-      </button>
-
-    </div>
+      <div class="service-content">
+        <h3 class="service-name">${service.name}</h3>
+        <p class="service-description">${service.description}</p>
+        <div class="service-price">${service.price}</div>
+        <button class="service-book-btn js-book-btn">
+          Book on WhatsApp
+        </button>
+      </div>
     `;
 
     const image = card.querySelector(".service-image");
@@ -77,9 +64,7 @@ Please let me know available times.`;
 
     card.querySelector(".prev-btn").addEventListener("click", () => {
       currentImage =
-        (currentImage - 1 + service.images.length) %
-        service.images.length;
-
+        (currentImage - 1 + service.images.length) % service.images.length;
       image.src = service.images[currentImage];
     });
 
@@ -90,32 +75,20 @@ Please let me know available times.`;
     servicesGrid.appendChild(card);
   });
 
-  // update button text
-  toggleBtn.textContent = showingAll
-    ? "View Less"
-    : "View More";
+  // Update button — hide it if all services already fit in initial view
+  if (services.length <= INITIAL_COUNT) {
+    toggleBtn.style.display = "none";
+  } else {
+    toggleBtn.style.display = "";
+    toggleBtn.textContent = showingAll ? "View Less" : "View More";
+  }
 }
 
-// toggle logic
+// Toggle logic
 toggleBtn.addEventListener("click", () => {
   showingAll = !showingAll;
   renderServices();
 });
 
-// initial render
+// Initial render
 renderServices();
-const servicesGrid = document.querySelector(".js-services-grid");
-const toggleBtn = document.querySelector(".js-toggle-btn");
-
-let expanded = false;
-
-toggleBtn.addEventListener("click", () => {
-
-  expanded = !expanded;
-
-  servicesGrid.classList.toggle("expanded", expanded);
-
-  toggleBtn.textContent = expanded
-    ? "View Less"
-    : "View More";
-});

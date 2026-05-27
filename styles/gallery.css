@@ -44,7 +44,7 @@
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-height: 900px; /* shows ~6 rows */
+    max-height: 1075px; /* shows ~6 rows */
   }
 }
 
