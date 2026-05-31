@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Clement the Barber</title>
 
     <link rel="icon" type="image/jpeg" href="Images-and-icons/images/processed_Screenshot_20260526_172954_OneDrive.jpg">
 
+    <!-- SEO META TAGS -->
+    <title>Clement The Barber | Professional Haircuts & Fades in Johannesburg</title>
+
+    <meta name="description" content="Clement The Barber is located at 8b Vanessa St, Buccleuch, Johannesburg. We offer premium fades, beard grooming, and modern hairstyles. Book instantly via WhatsApp.">
+  
+    <meta name="keywords" content="barber Johannesburg, barber Buccleuch, barber Sandton, barber Midrand, haircut Johannesburg, haircuts near me, men's haircut Johannesburg, skin fade Johannesburg, taper fade Johannesburg, fade haircut Johannesburg, beard grooming Johannesburg, line up haircut, barber shop Johannesburg, barber near Woodmead, professional barber Gauteng, ladies haircut Johannesburg, braiding Johannesburg, haircut booking Johannesburg, Clement The Barber">
+
+
+    <meta name="author" content="Clement The Barber">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph (Facebook / WhatsApp preview) -->
+    <meta property="og:title" content="Clement The Barber | Premium Haircuts in Johannesburg">
+    <meta property="og:description" content="Book professional fades, beard trims, and modern hairstyles in Johannesburg. Fast WhatsApp booking available.">
+    <meta property="og:image" content="Images-and-icons/images/preview.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clement The Barber">
+    <meta name="twitter:description" content="Premium barber services in Johannesburg. Book via WhatsApp.">
+    <meta name="twitter:image" content="Images-and-icons/images/preview.jpg">
+
+    <link rel="canonical" href="https://clementthebarber.co.za">
+
+    <meta name="geo.region" content="ZA-GP">
+    <meta name="geo.placename" content="Buccleuch, Johannesburg">
+    <meta name="geo.position" content="-26.0600;28.1000">
+    <meta name="ICBM" content="-26.0600, 28.1000">
 
     <!--CSS-->
     <link rel="stylesheet" href="styles/header.css">
@@ -18,6 +45,33 @@
     <link rel="stylesheet" href="styles/how-it-works.css">
     <link rel="stylesheet" href="styles/contact.css">
     <link rel="stylesheet" href="styles/footer.css">
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Barbershop",
+      "name": "Clement The Barber",
+      "image": "Images-and-icons/images/preview.jpg",
+      "url": "https://clementthebarber.co.za",
+      "telephone": "+27718723420",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8b Vanessa St",
+        "addressLocality": "Buccleuch",
+        "addressRegion": "Gauteng",
+        "postalCode": "2090",
+        "addressCountry": "ZA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -26.0600,
+        "longitude": 28.1000
+      },
+      "openingHours": "Mo-Sa 08:00-18:00",
+      "priceRange": "R120 - R250"
+    }
+    </script>
   </head>
   <body>
     <!-- Header -->
@@ -47,7 +101,7 @@
     </header>
 
     <!-- Mobile menu -->
-    <div class="mobile-menu js-menu">
+    <div class="mobile-menu js-menu" id="menu">
 
       <div class="mobile-header">
         <span class="close-btn js-close-btn">X</span>
@@ -68,7 +122,7 @@
     </div>
     <main>
       <!-- Hero section -->
-      <section class="hero-home">
+      <section class="hero-home" id="home">
 
         <div class="hero-bg">
           <div class="hero-bg-gradient"></div>
@@ -157,7 +211,7 @@
       </section>
 
       <!--About section-->
-      <section class="about-section">
+      <section class="about-section" id="about">
 
         <div class="about-container">
 
@@ -169,7 +223,8 @@
             <img
               src="Images-and-icons/images/IMG-20260526-WA0035.jpg"
               alt="Clement The Barber"
-              class="about-image">
+              class="about-image"
+              alt="Professional barber performing a fade haircut in Buccleuch Johannesburg">
 
             <div class="about-image-badge">
               Professional Barber
@@ -250,7 +305,7 @@
       </section>
 
       <!--Services section-->
-      <section class="services-section">
+      <section class="services-section" id="services">
 
         <div class="services-header">
 
@@ -279,7 +334,7 @@
       </section>
 
       <!-- Help section -->
-      <section class="help-section">
+      <section class="help-section" id="help">
 
         <div class="help-container">
 
@@ -313,7 +368,7 @@
       </section>
 
       <!-- Gallery section -->
-      <section class="gallery-section">
+      <section class="gallery-section" id="gallery">
 
         <div class="gallery-header">
           <span class="gallery-tag">Gallery</span>
@@ -344,7 +399,7 @@
       </div>
 
       <!-- How It Works section -->
-      <section class="how-section">
+      <section class="how-section" id="how-it-works">
 
         <div class="how-header">
 
@@ -426,75 +481,103 @@
       </section>
 
       <!-- Booking Section -->
-      <section class="booking-section">
+      <section class="booking-section" id="booking">
 
         <div class="booking-container">
 
           <div class="booking-header">
             <h2>Book Your Appointment</h2>
-            <p>Choose your service and preferred time. We’ll confirm your booking via WhatsApp or email soon.</p>
+            <p>
+              Choose your service and preferred time.
+              We'll confirm your booking as soon as possible.
+            </p>
           </div>
 
           <form class="booking-form">
 
             <!-- Name -->
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" placeholder="Your name" required>
+              <label for="customer-name">Name</label>
+
+              <input
+                type="text"
+                id="customer-name"
+                placeholder="Your name"
+                required>
             </div>
 
             <!-- Phone -->
             <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="Your phone number" required>
+              <label for="customer-phone">Phone Number</label>
+
+              <input
+                type="tel"
+                id="customer-phone"
+                placeholder="Your phone number"
+                required>
             </div>
 
             <!-- Service -->
             <div class="form-group">
-              <label>Service</label>
-              <select required>
+              <label for="customer-service">Service</label>
+
+              <select
+                id="customer-service"
+                required>
+
                 <option value="">Select a service</option>
-                <option>High Top Fade</option>
-                <option>Fade</option>
-                <option>Skin & Taper Fade</option>
-                <option>Clean Fade</option>
-                <option>Tape Fade</option>
-                <option>High Top Skin Fade</option>
-                <option>Ladies Cut</option>
-                <option>Ladies Braiding</option>
+                <option value="High Top Fade">High Top Fade</option>
+                <option value="Fade">Fade</option>
+                <option value="Skin & Taper Fade">Skin & Taper Fade</option>
+                <option value="Clean Fade">Clean Fade</option>
+                <option value="Tape Fade">Tape Fade</option>
+                <option value="High Top Skin Fade">High Top Skin Fade</option>
+                <option value="Ladies Cut">Ladies Cut</option>
+                <option value="Ladies Braiding">Ladies Braiding</option>
+
               </select>
             </div>
 
-            <!-- Time -->
+            <!-- Preferred Time -->
             <div class="form-group">
+
               <label>Preferred Time</label>
+
               <div class="time-grid">
 
-                <label><input type="radio" name="time"> 8:00 AM</label>
-                <label><input type="radio" name="time"> 8:30 AM</label>
-                <label><input type="radio" name="time"> 9:00 AM</label>
-                <label><input type="radio" name="time"> 9:30 AM</label>
-                <label><input type="radio" name="time"> 10:00 AM</label>
-                <label><input type="radio" name="time"> 10:30 AM</label>
-                <label><input type="radio" name="time"> 11:00 AM</label>
-                <label><input type="radio" name="time"> 11:30 AM</label>
-                <label><input type="radio" name="time"> 12:00 PM</label>
-                <label><input type="radio" name="time"> 12:30 PM</label>
-                <label><input type="radio" name="time"> 1:00 PM</label>
-                <label><input type="radio" name="time"> 1:30 PM</label>
-                <label><input type="radio" name="time"> 2:00 PM</label>
-                <label><input type="radio" name="time"> 2:30 PM</label>
-                <label><input type="radio" name="time"> 3:00 PM</label>
-                <label><input type="radio" name="time"> 3:30 PM</label>
-                <label><input type="radio" name="time"> 4:00 PM</label>
-                <label><input type="radio" name="time"> 4:30 PM</label>
-                <label><input type="radio" name="time"> 5:00 PM</label>
-                <label><input type="radio" name="time"> 5:30 PM</label>
+                <label><input type="radio" name="time" value="8:00 AM"> 8:00 AM</label>
+                <label><input type="radio" name="time" value="8:30 AM"> 8:30 AM</label>
+                <label><input type="radio" name="time" value="9:00 AM"> 9:00 AM</label>
+                <label><input type="radio" name="time" value="9:30 AM"> 9:30 AM</label>
+
+                <label><input type="radio" name="time" value="10:00 AM"> 10:00 AM</label>
+                <label><input type="radio" name="time" value="10:30 AM"> 10:30 AM</label>
+                <label><input type="radio" name="time" value="11:00 AM"> 11:00 AM</label>
+                <label><input type="radio" name="time" value="11:30 AM"> 11:30 AM</label>
+
+                <label><input type="radio" name="time" value="12:00 PM"> 12:00 PM</label>
+                <label><input type="radio" name="time" value="12:30 PM"> 12:30 PM</label>
+
+                <label><input type="radio" name="time" value="1:00 PM"> 1:00 PM</label>
+                <label><input type="radio" name="time" value="1:30 PM"> 1:30 PM</label>
+
+                <label><input type="radio" name="time" value="2:00 PM"> 2:00 PM</label>
+                <label><input type="radio" name="time" value="2:30 PM"> 2:30 PM</label>
+
+                <label><input type="radio" name="time" value="3:00 PM"> 3:00 PM</label>
+                <label><input type="radio" name="time" value="3:30 PM"> 3:30 PM</label>
+
+                <label><input type="radio" name="time" value="4:00 PM"> 4:00 PM</label>
+                <label><input type="radio" name="time" value="4:30 PM"> 4:30 PM</label>
+
+                <label><input type="radio" name="time" value="5:00 PM"> 5:00 PM</label>
+                <label><input type="radio" name="time" value="5:30 PM"> 5:30 PM</label>
 
               </div>
+
             </div>
 
-            <!-- Button -->
+            <!-- Submit Button -->
             <button type="submit" class="booking-btn">
               Book Your Cut Now
             </button>
@@ -507,17 +590,26 @@
 
       <!-- Success Popup -->
       <div class="booking-popup js-booking-popup">
+
         <div class="popup-content">
+
           <div class="popup-icon">✔</div>
 
           <h3>Booking Sent!</h3>
-          <p>Your appointment request has been received. We will contact you shortly.</p>
+
+          <p>
+            Your appointment request has been received.
+            We will contact you shortly.
+          </p>
 
           <button class="popup-btn js-popup-close">
             Close
           </button>
+
         </div>
-      </div>      
+
+      </div>
+
     </main>
 
     <!--Footer-->
@@ -549,7 +641,7 @@
         <div class="footer-contact">
           <h3>Contact</h3>
 
-          <p>📍 Johannesburg, South Africa</p>
+          <p>📍  8b Vanessa St, Buccleuch, Johannesburg, 2090</p>
           <p>📞 WhatsApp Available</p>
 
           <a
@@ -578,9 +670,10 @@
 
     </footer>
 
+    <script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
 
-
-</div>
     <script src="scripts/header.js"></script>
     <script src="scripts/home.js"></script>
     <script type="module" src="scripts/services.js"></script>
@@ -588,6 +681,6 @@
     <script type="module" src="scripts/gallery.js"></script>
     <script type="module" src="scripts/how-it-works.js"></script>
     <script type="module" src="scripts/contact.js"></script>
-  </body>
+    <script src="scripts/booking.js"></script>
   </body>
 </html>

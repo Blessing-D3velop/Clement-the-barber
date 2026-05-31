@@ -10,7 +10,7 @@ form.addEventListener("submit", (e) => {
   const service = form.querySelector("select").value;
   const time = form.querySelector("input[name='time']:checked");
 
-  // VALIDATION
+
   if (!name) {
     alert("Please enter your name");
     return;
@@ -31,19 +31,18 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  // SUCCESS POPUP
   popup.classList.add("active");
 
-  // reset form
+
   form.reset();
 });
 
-// close popup
+
 closePopup.addEventListener("click", () => {
   popup.classList.remove("active");
 });
 
-// click outside popup to close
+
 popup.addEventListener("click", (e) => {
   if (e.target === popup) {
     popup.classList.remove("active");
