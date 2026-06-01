@@ -37,3 +37,43 @@
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
+
+.instagram-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 75px; /* sits above Facebook button */
+  right: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: pulse-instagram 2s infinite;
+  transition: transform 0.3s ease;
+
+}
+
+.instagram-float img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.instagram-float:hover {
+  transform: scale(1.1);
+}
+
+/* Instagram glow animation */
+@keyframes pulse-instagram {
+  0% {
+    box-shadow: 0 0 0 0 rgba(214, 36, 159, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(214, 36, 159, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(214, 36, 159, 0);
+  }
+}
